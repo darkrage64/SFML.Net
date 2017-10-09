@@ -70,6 +70,7 @@
   -->
   <ItemGroup>
     <Compile Include="Clock.cs" />
+    <Compile Include="MathUtil.cs" />
     <Compile Include="ObjectBase.cs" />
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>

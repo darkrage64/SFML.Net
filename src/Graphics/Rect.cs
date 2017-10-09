@@ -487,6 +487,9 @@ namespace SFML.Graphics
         /// <summary>Width of the rectangle</summary>
         public float Width;
 
+        /// <summary>Height of the rectangle</summary>
+        public float Height;
+
         /// <summary>
         /// Utility function to linearly interpolate between to FloatRects.
         /// </summary>

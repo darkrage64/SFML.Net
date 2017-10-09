@@ -31,6 +31,20 @@
             </summary>
             <returns>Time elapsed since the clock was started.</returns>
         </member>
+        <member name="T:SFML.System.MathUtil">
+            <summary>
+            Utility class for generic math operations
+            </summary>
+        </member>
+        <member name="M:SFML.System.MathUtil.Lerp(System.Single,System.Single,System.Single)">
+            <summary>
+            Linearly interpolates between a and b by t.
+            </summary>
+            <param name="_fA">Start value for T = 0</param>
+            <param name="_fB">End value for T = 1</param>
+            <param name="_fT">Value between 0 and 1</param>
+            <returns>The interpolated float result between the two float values.</returns>
+        </member>
         <member name="T:SFML.System.Time">
             <summary>
             This class represents a time value
