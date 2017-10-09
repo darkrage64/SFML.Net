@@ -80,13 +80,13 @@ namespace SFML.Graphics
 
         ////////////////////////////////////////////////////////////
         /// <summary>
-        /// Source texture displayed by the sprite
+        /// Source texture displayed by the sprite, Rect Bounds will always be recalculated
         /// </summary>
         ////////////////////////////////////////////////////////////
         public Texture Texture
         {
             get { return myTexture; }
-            set { myTexture = value; sfSprite_setTexture(CPointer, value != null ? value.CPointer : IntPtr.Zero, false); }
+            set { myTexture = value; sfSprite_setTexture(CPointer, value != null ? value.CPointer : IntPtr.Zero, true); }
         }
 
         ////////////////////////////////////////////////////////////

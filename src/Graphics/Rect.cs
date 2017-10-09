@@ -62,6 +62,15 @@ namespace SFML.Graphics
 
         ////////////////////////////////////////////////////////////
         /// <summary>
+        /// Check if a point is inside the rectangle's area
+        /// </summary>
+        /// <param name="position">Vector2i coordinate of the point to test</param>
+        /// <returns>True if the point is inside</returns>
+        ////////////////////////////////////////////////////////////
+        public bool Contains(Vector2i position) => Contains(position.X, position.Y);
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
         /// Check intersection between two rectangles
         /// </summary>
         /// <param name="rect"> Rectangle to test</param>
@@ -222,14 +231,21 @@ namespace SFML.Graphics
         /// <summary>Left coordinate of the rectangle</summary>
         public int Left;
 
+        /// <summary>Right coordinate of the rectangle</summary>
+        public float Right { get => Left + Width; }
+
         /// <summary>Top coordinate of the rectangle</summary>
         public int Top;
+
+        /// <summary>Bottom coordinate of the rectangle</summary>
+        public float Bottom { get => Top + Height; }
 
         /// <summary>Width of the rectangle</summary>
         public int Width;
 
         /// <summary>Height of the rectangle</summary>
         public int Height;
+
     }
 
     ////////////////////////////////////////////////////////////
@@ -287,6 +303,15 @@ namespace SFML.Graphics
 
             return (x >= minX) && (x < maxX) && (y >= minY) && (y < maxY);
         }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Check if a point is inside the rectangle's area
+        /// </summary>
+        /// <param name="position">Vector2f coordinate of the point to test</param>
+        /// <returns>True if the point is inside</returns>
+        ////////////////////////////////////////////////////////////
+        public bool Contains(Vector2f position) => Contains(position.X, position.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -450,13 +475,32 @@ namespace SFML.Graphics
         /// <summary>Left coordinate of the rectangle</summary>
         public float Left;
 
+        /// <summary>Right coordinate of the rectangle</summary>
+        public float Right { get => Left + Width; }
+
         /// <summary>Top coordinate of the rectangle</summary>
         public float Top;
+
+        /// <summary>Bottom coordinate of the rectangle</summary>
+        public float Bottom { get => Top + Height; }
 
         /// <summary>Width of the rectangle</summary>
         public float Width;
 
-        /// <summary>Height of the rectangle</summary>
-        public float Height;
+        /// <summary>
+        /// Utility function to linearly interpolate between to FloatRects.
+        /// </summary>
+        /// <param name="rA">Rect A, 0</param>
+        /// <param name="rB">Rect B, 1</param>
+        /// <param name="t">0 to 1</param>
+        /// <returns></returns>
+        public static FloatRect Lerp(FloatRect rA, FloatRect rB, float t)
+        {
+            return new FloatRect(
+                MathUtil.Lerp(rA.Left, rB.Left, t),
+                MathUtil.Lerp(rA.Top, rB.Top, t),
+                MathUtil.Lerp(rA.Width, rB.Width, t),
+                MathUtil.Lerp(rA.Height, rB.Height, t));
+        }
     }
 }
