@@ -298,7 +298,7 @@ namespace SFML.Window
 
         ////////////////////////////////////////////////////////////
         /// <summary>
-        /// Activate of deactivate the window as the current target
+        /// Activate or deactivate the window as the current target
         /// for rendering
         /// </summary>
         /// <param name="active">True to activate, false to deactivate (true by default)</param>

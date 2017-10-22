@@ -200,6 +200,22 @@ namespace SFML.Graphics
                              (byte)((int)left.A * right.A / 255));
         }
 
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Operator * overload ; multiply a Color by a scalar value
+        /// </summary>
+        /// <param name="c">Vector</param>
+        /// <param name="x">Scalar value</param>
+        /// <returns>Color.RGB * x</returns>
+        ////////////////////////////////////////////////////////////
+        public static Color operator *(Color c, float x)
+        {
+            return new Color((byte)(Math.Max(Math.Min((float)c.R * x, 255), 0)),
+                            (byte)(Math.Max(Math.Min((float)c.G * x, 255), 0)),
+                            (byte)(Math.Max(Math.Min((float)c.B * x, 255), 0)),
+                            c.A);
+        }
+
         /// <summary>Red component of the color</summary>
         public byte R;
 

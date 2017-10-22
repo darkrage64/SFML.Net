@@ -491,19 +491,46 @@ namespace SFML.Graphics
         public float Height;
 
         /// <summary>
-        /// Utility function to linearly interpolate between to FloatRects.
+        /// Utility function to linearly interpolate between two FloatRects.
         /// </summary>
-        /// <param name="rA">Rect A, 0</param>
-        /// <param name="rB">Rect B, 1</param>
+        /// <param name="r1">First rect, returned at t == 0</param>
+        /// <param name="r2">Second rect, returned at t == 1</param>
         /// <param name="t">0 to 1</param>
         /// <returns></returns>
-        public static FloatRect Lerp(FloatRect rA, FloatRect rB, float t)
+        public static FloatRect Lerp(FloatRect r1, FloatRect r2, float t)
         {
             return new FloatRect(
-                MathUtil.Lerp(rA.Left, rB.Left, t),
-                MathUtil.Lerp(rA.Top, rB.Top, t),
-                MathUtil.Lerp(rA.Width, rB.Width, t),
-                MathUtil.Lerp(rA.Height, rB.Height, t));
+                MathUtil.Lerp(r1.Left, r2.Left, t),
+                MathUtil.Lerp(r1.Top, r2.Top, t),
+                MathUtil.Lerp(r1.Width, r2.Width, t),
+                MathUtil.Lerp(r1.Height, r2.Height, t));
+        }
+
+        /// <summary>
+        /// Constrain given position to bounds
+        /// </summary>
+        /// <param name="position">Position to constrain</param>
+        /// <returns>Position constrained to bounds</returns>
+        public Vector2f Constrain(Vector2f position)
+        {
+            return new Vector2f(
+                Math.Max(Left, Math.Min(Right, position.X)),
+                Math.Max(Top, Math.Min(Bottom, position.Y)));
+        }
+
+        /// <summary>
+        /// Delta vector from a position outside of the rectangle
+        /// </summary>
+        /// <param name="position">Position relative to rectangle</param>
+        /// <returns>Delta vector relative to rectangle border</returns>
+        public Vector2f Delta(Vector2f position)
+        {
+            if (Contains(position))
+                return new Vector2f(0, 0);
+            else
+            {
+                return position - Constrain(position);
+            }
         }
     }
 }
