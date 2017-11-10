@@ -111,8 +111,8 @@ namespace SFML.Graphics
         [Obsolete]
         public Color Color
         {
-            get { return sfText_getFillColor(CPointer); }
-            set { sfText_setFillColor(CPointer, value); }
+            get { return sfText_getColor(CPointer); }
+            set { sfText_setColor(CPointer, value); }
         }
 
         ////////////////////////////////////////////////////////////
@@ -128,8 +128,8 @@ namespace SFML.Graphics
         ////////////////////////////////////////////////////////////
         public Color FillColor
         {
-            get { return sfText_getFillColor(CPointer); }
-            set { sfText_setFillColor(CPointer, value); }
+            get { return sfText_getColor(CPointer); }
+            set { sfText_setColor(CPointer, value); }
         }
 
         ////////////////////////////////////////////////////////////
@@ -354,11 +354,11 @@ namespace SFML.Graphics
         [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfText_destroy(IntPtr CPointer);
 
-        [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfText_setColor(IntPtr CPointer, Color Color);
 
-        [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfText_setFillColor(IntPtr CPointer, Color Color);
+        //[DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        //static extern void sfText_setFillColor(IntPtr CPointer, Color Color);
 
         [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfText_setOutlineColor(IntPtr CPointer, Color Color);
@@ -366,11 +366,11 @@ namespace SFML.Graphics
         [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfText_setOutlineThickness(IntPtr CPointer, float thickness);
 
-        [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern Color sfText_getColor(IntPtr CPointer);
 
-        [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern Color sfText_getFillColor(IntPtr CPointer);
+        //[DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        //static extern Color sfText_getFillColor(IntPtr CPointer);
 
         [DllImport("csfml-graphics-2", CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern Color sfText_getOutlineColor(IntPtr CPointer);
